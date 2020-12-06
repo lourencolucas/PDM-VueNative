@@ -4,9 +4,13 @@ Arquivos da Atividade avaliativa da matéria de Programação para Dispositivos 
 ```node
 npm install
 ```
+Ou
+```node
+yarn
+```
 ### Iniciar Projeto no Expo:
 ```node
-expo start
+yarn start
 ```
 ## Telas do Projeto
 Todas as telas estão na pasta screens.
