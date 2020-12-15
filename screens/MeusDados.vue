@@ -3,27 +3,44 @@
     <status-bar background-color="black" bar-style="light-content" />
     <text class="text-cadastro">Meus Dados</text>
     <text class="label">Nome</text>
-    <text-input class="input" v-model="nome"/>
+    <text-input class="input" v-model="usuario.nome" />
     <text class="label">Celular</text>
-    <text-input class="input" v-model="celular"/>
+    <text-input class="input" v-model="usuario.celular" />
     <text class="label">Email</text>
-    <text-input class="input" v-model="email"/>
+    <text-input class="input" v-model="usuario.email" />
     <text class="label">Senha</text>
-    <text-input class="input" v-model="senha"/>
+    <text-input class="input" v-model="usuario.senha" />
     <view class="itens">
-      <button class="btn-entrar" title="Editar" color="black" @press="changeRoute"></button>
+      <!-- <button
+        class="btn-entrar"
+        title="Editar"
+        color="black"
+        @press="changeRoute"
+      ></button> -->
     </view>
   </view>
 </template>
 
 <script>
+import GetUser from "../services/GetUser.service";
+
 export default {
+  async mounted() {
+    const {usuario} = await GetUser.getDados();
+    this.usuario = usuario;
+    console.log(this.usuario);
+
+  },
   data() {
     return {
-      email: "lorenipsun@gmail.com",
-      senha: "************",
-      celular: "(82) 99999-9999",
-      nome: "Loren Ipsun Et Past",
+      usuario: {
+        nome: null,
+        email: null,
+        celular: null,
+        senha: null,
+        idade: null,
+        sexo: null,
+      },
     };
   },
   props: {

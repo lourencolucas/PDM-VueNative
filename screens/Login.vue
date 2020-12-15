@@ -3,29 +3,45 @@
     <status-bar background-color="black" bar-style="light-content" />
     <text class="text-login">Login</text>
     <text class="label">E-mail</text>
-    <text-input class="input"/>
+    <text-input class="input" v-model="usuario.email"/>
     <text class="label">Senha</text>
-    <text-input class="input"/>
-    <view class="itens"> 
+    <text-input class="input" v-model="usuario.senha" />
+    <view class="itens">
       <text class="recuperar" @press="recuperarRoute">Esqueceu a senha?</text>
-      <button class="btn-entrar" title="Login" color="black" @press="changeRoute"></button>
+      <button
+        class="btn-entrar"
+        title="Login"
+        color="black"
+        @press="changeRoute"
+      ></button>
     </view>
-
   </view>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      usuario: {
+        email: "userdemo@demo.com.br",
+        senha: "123456",
+      },
+    };
+  },
   props: {
     navigation: { type: Object },
   },
   methods: {
     changeRoute() {
-      this.navigation.navigate("Add");
+      this.navigation.navigate("Painel");
+    },
+    logarTeste() {
+
+      this.navigation.navigate("Painel");
     },
     recuperarRoute() {
       this.navigation.navigate("Recuperar");
-    }
+    },
   },
 };
 </script>

@@ -1,21 +1,19 @@
 <template>
   <view class="container">
     <status-bar background-color="black" bar-style="light-content" />
-    <text class="text-cadastro">Cadastrar Usuários</text>
-    <text class="label">Nome</text>
-    <text-input class="input" placeholder="Digite seu Nome" />
-    <text class="label">Celular</text>
-    <text-input class="input" placeholder="Digite seu Celular" />
-    <text class="label">Email</text>
-    <text-input class="input" placeholder="Digite seu E-mail" />
-    <text class="label">Senha</text>
-    <text-input class="input" placeholder="Digite seu Senha" />
+    <text class="text-recuperar">Seja bem vindo!</text>
     <view class="itens">
+      <button
+        class="btn-entrar"
+        title="Meus dados"
+        color="black"
+        @press="changeRoute"
+      ></button>
       <button
         class="btn-entrar"
         title="Cadastrar"
         color="black"
-        @press="statusCad"
+        @press="cadastrarRoute"
       ></button>
     </view>
   </view>
@@ -25,23 +23,22 @@
 export default {
   data() {
     return {
-      usuario: {
-        nome: "Rony",
-        email: "userdemo@demo.com.br",
-        celular: "8298807555",
-        senha: "123456",
-      },
+      email: "E-mail",
+      senha: "Senha",
     };
   },
   props: {
     navigation: { type: Object },
   },
   methods: {
+    pressionar: function () {
+      alert("Olá, usuário!");
+    },
     changeRoute() {
       this.navigation.navigate("Details");
     },
-    statusCad() {
-      alert("Verificar Status 200 ou 500!");
+    cadastrarRoute() {
+      this.navigation.navigate("Add");
     },
   },
 };
@@ -58,17 +55,12 @@ export default {
   display: flex;
 }
 
-.recuperar {
-  align-self: flex-start;
-  margin: 15px 10px;
-}
-
 .label {
   align-self: flex-start;
 }
-.text-cadastro {
+.text-recuperar {
   margin: 10%;
-  font-size: 30px;
+  font-size: 40px;
   color: black;
 }
 
