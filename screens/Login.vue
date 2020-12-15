@@ -24,12 +24,8 @@ export default {
   data() {
     return {
       usuario: {
-        nome: "Rony",
-        celular: "8298807555",
         email: "userdemo@demo.com.br",
         senha: "123456",
-        sexo: "Masculino",
-        idade: "30",
       },
     };
   },
@@ -44,23 +40,16 @@ export default {
       axios
         .post("https://us-central1-uncisal.cloudfunctions.net/users-login", {
           usuario: {
-            nome: "Rony",
-            celular: 8298807555,
             email: "userdemo@demo.com.br",
             senha: 123456,
-            sexo: "Masculino",
-            idade: 30,
           },
         })
         .then(function (response) {
-          if (response = undefined) {
-            alert("Status 500!");
-          }else {
-            alert("Status 200!");
-        }
+          alert(response.status);
           console.log(response);
         })
         .catch(function (error) {
+          alert(error);
           console.log(error);
         });
       this.navigation.navigate("Painel");

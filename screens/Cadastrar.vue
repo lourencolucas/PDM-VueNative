@@ -55,11 +55,12 @@ export default {
         })
         .then(function (response) {
           console.log(response);
+          alert(response.status);
         })
         .catch(function (error) {
           console.log(error);
+          alert(error);
         });
-      alert("Verificar Status 200!");
     },
     statusCad() {
       alert("Verificar Status 200 ou 500!");
