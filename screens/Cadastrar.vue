@@ -15,13 +15,14 @@
         class="btn-entrar"
         title="Cadastrar"
         color="black"
-        @press="statusCad"
+        @press="cadStatus"
       ></button>
     </view>
   </view>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -39,6 +40,26 @@ export default {
   methods: {
     changeRoute() {
       this.navigation.navigate("Details");
+    },
+    cadStatus() {
+      axios
+        .post("https://us-central1-uncisal.cloudfunctions.net/users-create", {
+          usuario: {
+            nome: "Rony",
+            celular: "8298807555",
+            email: "userdemo@demo.com.br",
+            senha: "123456",
+            sexo: "Masculino",
+            idade: "30",
+          },
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      alert("Verificar Status 200!");
     },
     statusCad() {
       alert("Verificar Status 200 ou 500!");
