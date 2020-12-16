@@ -12,10 +12,10 @@ export default class CadUser {
         })
 
         if(status == 200) {
-            console.log(status);
+            // console.log(status);
             return true;
         } else {
-            console.log(status);
+            // console.log(status);
             return false;
         }
     }

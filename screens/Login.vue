@@ -32,8 +32,8 @@ export default {
   data() {
     return {
       usuario: {
-        email: "userdemo@demo.com.br",
-        senha: "minhasenha",
+        email: null,
+        senha: null,
       },
     };
   },
@@ -52,7 +52,7 @@ export default {
     },
     async logarTeste() {
       const response = await LoginUser.loginUser(this.usuario);
-      console.log(response);
+      // console.log(response);
 
       if (response == true) {
         alert("Login realizado com sucesso!");

@@ -9,12 +9,6 @@
         color="black"
         @press="changeRoute"
       ></button>
-      <button
-        class="btn-entrar"
-        title="Cadastrar"
-        color="black"
-        @press="cadastrarRoute"
-      ></button>
     </view>
   </view>
 </template>
@@ -36,9 +30,6 @@ export default {
     },
     changeRoute() {
       this.navigation.navigate("Details");
-    },
-    cadastrarRoute() {
-      this.navigation.navigate("Add");
     },
   },
 };

@@ -11,12 +11,6 @@
     <text class="label">Senha</text>
     <text-input class="input" v-model="usuario.senha" />
     <view class="itens">
-      <!-- <button
-        class="btn-entrar"
-        title="Editar"
-        color="black"
-        @press="changeRoute"
-      ></button> -->
     </view>
   </view>
 </template>
@@ -28,7 +22,7 @@ export default {
   async mounted() {
     const {usuario} = await GetUser.getDados();
     this.usuario = usuario;
-    console.log(this.usuario);
+    // console.log(this.usuario);
 
   },
   data() {

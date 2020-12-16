@@ -35,10 +35,10 @@ export default {
   data() {
     return {
       usuario: {
-        nome: "Rony",
-        email: "userdemo@demo.com.br",
-        celular: "8298807555",
-        senha: "minhasenha",
+        nome: null,
+        email: null,
+        celular: null,
+        senha: null,
       },
     };
   },
@@ -54,7 +54,7 @@ export default {
     },
     async cadStatus() {
       const response = await CadUser.cadastarUser(this.usuario);
-      console.log(response);
+      // console.log(response);
 
       if (response == true) {
         alert("Dados enviados");
