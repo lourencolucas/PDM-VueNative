@@ -3,13 +3,13 @@
     <status-bar background-color="black" bar-style="light-content" />
     <text class="text-cadastro">Cadastrar Usuários</text>
     <text class="label">Nome</text>
-    <text-input class="input" placeholder="Digite seu Nome" />
+    <text-input class="input" v-model="usuario.nome" />
     <text class="label">Celular</text>
-    <text-input class="input" placeholder="Digite seu Celular" />
+    <text-input class="input" v-model="usuario.celular" />
     <text class="label">Email</text>
-    <text-input class="input" placeholder="Digite seu E-mail" />
+    <text-input class="input" v-model="usuario.email" />
     <text class="label">Senha</text>
-    <text-input class="input" placeholder="Digite seu Senha" />
+    <text-input class="input" v-model="usuario.senha" />
     <view class="itens">
       <button
         class="btn-entrar"
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import CadUser from "../services/CadUser.service";
+
 export default {
   data() {
     return {
@@ -30,7 +31,7 @@ export default {
         nome: "Rony",
         email: "userdemo@demo.com.br",
         celular: "8298807555",
-        senha: "123456",
+        senha: "minhasenha",
       },
     };
   },
@@ -41,29 +42,15 @@ export default {
     changeRoute() {
       this.navigation.navigate("Details");
     },
-    cadStatus() {
-      axios
-        .post("https://us-central1-uncisal.cloudfunctions.net/users-create", {
-          usuario: {
-            nome: "Rony",
-            celular: "8298807555",
-            email: "userdemo@demo.com.br",
-            senha: "123456",
-            sexo: "Masculino",
-            idade: "30",
-          },
-        })
-        .then(function (response) {
-          console.log(response);
-          alert(response.status);
-        })
-        .catch(function (error) {
-          console.log(error);
-          alert(error);
-        });
-    },
-    statusCad() {
-      alert("Verificar Status 200 ou 500!");
+    async cadStatus() {
+      const response = await CadUser.cadastarUser(this.usuario);
+      console.log(response);
+
+      if (response == true) {
+        alert("Dados enviados");
+      } else {
+        alert("Dados não enviados");
+      }
     },
   },
 };

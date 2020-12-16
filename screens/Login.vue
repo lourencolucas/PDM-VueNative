@@ -19,13 +19,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import LoginUser from "../services/Login.service";
+
 export default {
   data() {
     return {
       usuario: {
         email: "userdemo@demo.com.br",
-        senha: "123456",
+        senha: "minhasenha",
       },
     };
   },
@@ -36,26 +37,19 @@ export default {
     changeRoute() {
       this.navigation.navigate("Painel");
     },
-    logarTeste() {
-      axios
-        .post("https://us-central1-uncisal.cloudfunctions.net/users-login", {
-          usuario: {
-            email: "userdemo@demo.com.br",
-            senha: 123456,
-          },
-        })
-        .then(function (response) {
-          alert(response.status);
-          console.log(response);
-        })
-        .catch(function (error) {
-          alert(error);
-          console.log(error);
-        });
-      this.navigation.navigate("Painel");
-    },
     recuperarRoute() {
       this.navigation.navigate("Recuperar");
+    },
+    async logarTeste() {
+      const response = await LoginUser.loginUser(this.usuario);
+      console.log(response);
+
+      if (response == true) {
+        alert("Dados enviados");
+        this.navigation.navigate("Painel");
+      } else {
+        alert("Dados não enviados");
+      }
     },
   },
 };

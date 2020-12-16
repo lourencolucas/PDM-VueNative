@@ -38,8 +38,6 @@ export default {
         email: null,
         celular: null,
         senha: null,
-        idade: null,
-        sexo: null,
       },
     };
   },

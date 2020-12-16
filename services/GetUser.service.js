@@ -5,6 +5,5 @@ export default class GetUser {
         const { data } = await axios.get("https://us-central1-uncisal.cloudfunctions.net/users-get?id=545");
         // console.log(data);
         return data;
-        
-    }
+    };
 }
