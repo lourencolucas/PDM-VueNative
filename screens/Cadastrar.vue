@@ -17,6 +17,13 @@
         color="black"
         @press="cadStatus"
       ></button>
+    <text class="label"></text>
+      <button
+        class="btn-entrar"
+        title="Login"
+        color="black"
+        @press="loginRoute"
+      ></button>
     </view>
   </view>
 </template>
@@ -41,6 +48,9 @@ export default {
   methods: {
     changeRoute() {
       this.navigation.navigate("Details");
+    },
+    loginRoute() {
+      this.navigation.navigate("Home");
     },
     async cadStatus() {
       const response = await CadUser.cadastarUser(this.usuario);
@@ -76,7 +86,7 @@ export default {
   align-self: flex-start;
 }
 .text-cadastro {
-  margin: 10%;
+  margin: 5%;
   font-size: 30px;
   color: black;
 }

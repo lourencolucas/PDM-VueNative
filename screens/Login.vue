@@ -14,6 +14,13 @@
         color="black"
         @press="logarTeste"
       ></button>
+    <text class="recuperar">Não é cadastrado?</text>
+      <button
+        class="btn-entrar"
+        title="Cadastrar"
+        color="black"
+        @press="cadastrarRoute"
+      ></button>
     </view>
   </view>
 </template>
@@ -37,6 +44,9 @@ export default {
     changeRoute() {
       this.navigation.navigate("Painel");
     },
+    cadastrarRoute() {
+      this.navigation.navigate("Add");
+    },
     recuperarRoute() {
       this.navigation.navigate("Recuperar");
     },
@@ -45,10 +55,10 @@ export default {
       console.log(response);
 
       if (response == true) {
-        alert("Dados enviados");
+        alert("Login realizado com sucesso!");
         this.navigation.navigate("Painel");
       } else {
-        alert("Dados não enviados");
+        alert("Dados incorretos!");
       }
     },
   },
@@ -75,7 +85,7 @@ export default {
   align-self: flex-start;
 }
 .text-login {
-  margin: 20%;
+  margin: 10%;
   font-size: 40px;
   color: black;
 }

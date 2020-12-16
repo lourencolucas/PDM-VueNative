@@ -12,7 +12,7 @@ export default class LoginUser {
         if(status == 200) {
             console.log(status);
             return true;
-        } else {
+        }else {
             console.log(status);
             return false;
         }
